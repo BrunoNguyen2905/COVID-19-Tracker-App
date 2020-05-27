@@ -2,9 +2,14 @@ import axios from 'axios';
 
 const url = 'https://covid19.mathdro.id/api';
 
-export const fetchData = async () => { //this case: data is object
+export const fetchData = async (country) => { //this case: data is object
+    let changeableUrl = url;
+
+    if(country) {
+        changeableUrl = `${url}/countries/${country}`;
+    }
     try {
-        const {data: {confirmed, recovered, deaths, lastUpdate}} = await axios.get(url); //after get url, will show {data: {}, status:200, config:{}} use destrucing js
+        const {data: {confirmed, recovered, deaths, lastUpdate}} = await axios.get(changeableUrl); //after get url, will show {data: {}, status:200, config:{}} use destrucing js
         
         const modifiedData = { 
             confirmed,
@@ -12,7 +17,6 @@ export const fetchData = async () => { //this case: data is object
             deaths,
             lastUpdate
         }
-
         return modifiedData;
         
     }catch(e){

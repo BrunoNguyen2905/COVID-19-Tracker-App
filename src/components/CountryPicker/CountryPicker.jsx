@@ -23,7 +23,7 @@ const CountryPicker = ({clicked}) => {
     return (
         <FormControl className={classes.FormControl}>
             <NativeSelect defaultValue=" " onChange={(e) => clicked(e.target.value)}>
-                <option value="global">Global</option>
+                <option value="">Global</option> {/*delete value="global" to avoid the url to : ${url}/countries/global in fetchData index.js/api */}
                 {fetchedCountries.map((country,i) =><option key={i} value={country}>{country}</option> )}
             </NativeSelect>
         </FormControl>
