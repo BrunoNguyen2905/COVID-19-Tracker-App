@@ -21,8 +21,6 @@ class App extends React.Component {
         console.log(country);
         console.log(fetchedData);
         this.setState({data: fetchedData, country: country});
-        //fetch data
-        //set the state
     }
     render() {
         const {data, country}= this.state; //destruct
